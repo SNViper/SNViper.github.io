@@ -9,7 +9,7 @@
             right:0px;
             top:25px; 
             width: 200px;
-            //height: 385px;
+            height: 343px;
             border: 1px solid black;
             margin: 0 auto;
             text-align: center;
@@ -37,6 +37,10 @@
         margin-top: 1em;
       }
 
+      #frame {
+        display: none;
+      }
+
     </style>
 </head>
 <body>
@@ -52,10 +56,10 @@
         <img style="position:relative;" src="lily.png">
 
         <br>
-        <iframe name="frame" src="https://pasta.snow-rentaroren.repl.co/counter.php" frameborder="0"></iframe>
+        <iframe src="display.php" id="display" frameborder="0"></iframe>
         <br>
         
-        <form action="https://pasta.snow-rentaroren.repl.co/counter.php" method="post" target="frame">
+        <form action="counter.php" method="post" target="frame">
 
           <input id="btn" type="submit" class="submit" value="Lilly said the FUNNY!!!">
           <br>
@@ -64,17 +68,40 @@
         </form>
       
     </div>
-    
+
+    <iframe name="frame" src="counter.php" frameborder="0" id="frame"></iframe>
+      
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/sha256.js"></script>
     <script>
+      
       const sha256 = CryptoJS.SHA256;
       let passhash = "7c04837eb356565e28bb14e5a1dedb240a5ac2561f8ed318c54a279fb6a9665e";
 
+      function reload(id) {
+        let frame = document.getElementById(id);
+        frame.src = frame.src;
+      }
+
+      function reloadDisplay() {
+        reload("display");
+      }
+
+      let refresh = setInterval(reloadDisplay, 1000);
+      
+      function startRefresh() {
+        refresh = setInterval(reloadDisplay, 1000);
+      }
+
+      let spamTimer = setTimeout(startRefresh, 1000);
+      
       document.getElementById("btn").onclick = function () {
         let pass = document.getElementById("password").value;
         let hash = sha256(pass);
         if(hash != passhash) alert("Lily get the FUCK outta here");
+        clearInterval(refresh);
+        clearTimeout(spamTimer);
+        spamTimer = setTimeout(startRefresh, 1000);
       }
       
     </script>
