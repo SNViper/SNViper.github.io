@@ -87,21 +87,21 @@
         reload("display");
       }
 
-      let refresh = setInterval(reloadDisplay, 1000);
+      let refresh = setInterval(reloadDisplay, 3000);
       
       function startRefresh() {
-        refresh = setInterval(reloadDisplay, 1000);
+        refresh = setInterval(reloadDisplay, 3000);
       }
 
-      let spamTimer = setTimeout(startRefresh, 1000);
+      let spamTimer = setTimeout(startRefresh, 3000);
       
       document.getElementById("btn").onclick = function () {
         let pass = document.getElementById("password").value;
         let hash = sha256(pass);
-        if(hash != passhash) alert("Lily get the FUCK outta here");
+        if(hash != passhash) alert("User is not authorized");
         clearInterval(refresh);
         clearTimeout(spamTimer);
-        spamTimer = setTimeout(startRefresh, 1000);
+        spamTimer = setTimeout(startRefresh, 3000);
       }
       
     </script>
