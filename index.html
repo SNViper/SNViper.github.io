@@ -3,49 +3,41 @@
 <head>
     <title>Viper's Counters'</title>
     <style>
+        
         .container {
             position:relative; 
             right:0px;
             top:25px; 
-            width: 210px;
-            height: 385px;
+            width: 200px;
+            //height: 385px;
             border: 1px solid black;
             margin: 0 auto;
+            text-align: center;
+            padding: 1em;
         }
+
+      .submit {
+        position: relative;
+        text-align: center;
+      }
+
+      iframe {
+        height: 2.2em;
+        width: 100%;
         
+      }
+
+      form, input {
+        display: inline-block;
+      }
+
+      #password {
+        width: 50px;
+        text-align:center;
+        margin-top: 1em;
+      }
 
     </style>
-    <script>
-
-
-        
-        var counter = 51;
-
-        var correct = false
-        function incrementCounter() {
-            if (correct === true) { 
-
-                counter++;
-                document.getElementById("counter-display").innerHTML = counter;
-            }
-            else {
-                alert("User is not authorized");
-            }
-        }
-
-        function password() {
-            let submit = document.querySelector("#userinput").value
-            if (submit === "a123") {
-
-                correct = true;
-
-            }
-
-
-        }
-
-
-    </script>
 </head>
 <body>
 
@@ -53,17 +45,39 @@
 
     <h1 style="position:relative; text-align:center; top:10px; font-family:monospace;">Viper's Lily Counter</h1>
     <div class="container">
-        <p style="position: relative; left: 0px; top: 0px; text-align: center;">"Lilliam dont you dare say it"</p>
-        <img style="position:relative; left:5px;" src="lily.png">
-        <p style="position:relative; left:0px; top:-5px; text-align:center;"> <span id="counter-display">0</span></p>
-        <button style="position:relative; left:30px; top:-10px; text-align:center;" button onclick="incrementCounter()">Lilly said the FUNNY!!!</button>
-        <center>
-            <input id="userinput" style="position:relative; width:142px;">
-            <button style="position:relative; top:10px" button onclick="password()"> Submit </button>
-        </center>
+      
+        <p style="position: relative; left: 0px; top: -8px; text-align: center;">
+          "Lilliam dont you dare say it"
+        </p>
+        <img style="position:relative;" src="lily.png">
+
+        <br>
+        <iframe name="frame" src="counter.php" frameborder="0"></iframe>
+        <br>
+        
+        <form action="counter.php" method="post" target="frame">
+
+          <input id="btn" type="submit" class="submit" value="Lilly said the FUNNY!!!">
+          <br>
+          <input id="password" type="password" name="password">
+
+        </form>
+      
     </div>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/sha256.js"></script>
+    <script>
+      const sha256 = CryptoJS.SHA256;
+      let passhash = "7c04837eb356565e28bb14e5a1dedb240a5ac2561f8ed318c54a279fb6a9665e";
 
+      document.getElementById("btn").onclick = function () {
+        let pass = document.getElementById("password").value;
+        let hash = sha256(pass);
+        if(hash != passhash) alert("Lily get the FUCK outta here");
+      }
+      
+    </script>
 
 </body>
 </html>
