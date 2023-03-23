@@ -2,90 +2,25 @@
 <html>
 <head>
     <title>Viper's Counters'</title>
-    <style>
-        
-        html, body {
-          padding: 0;
-          margin: 0;
-          height: 90vh;
-          background: black;
-        }
-        
-        body, .container {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-content: center;
-          //gap: 10px;
-          background: black;
-        }
-        
-        .container {
-            position:relative; 
-            //right:0px;
-            //top:25px; 
-            width: 200px;
-            height: 343px;
-            border: 1px solid black;
-            margin: 0 auto;
-            text-align: center;
-            padding: 1em;
-            padding-top: 1.5em;
-            background: white;
-        }
-       
-      h1 {
-          position:relative; 
-          text-align:center; 
-          font-family:monospace;
-          color: white;
-      }
-
-      .submit {
-        position: relative;
-        text-align: center;
-      }
-
-      iframe {
-        height: 2.2em;
-        width: 100%;
-        
-      }
-
-      form, input {
-        display: inline-block;
-      }
-
-      #password {
-        width: 50px;
-        text-align:center;
-        margin-top: 1em;
-      }
-
-      #frame {
-        display: none;
-      }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-
-
     <h1>Viper's Lily Counter</h1>
+    
     <div class="container">
       
-        <p style="position: relative; left: 0px; top: -8px; text-align: center;">
-          "Lilliam dont you dare say it"
-        </p>
-        <img style="position:relative;" src="lily.png">
+        <p>"Lilliam dont you dare say it"</p>
+        
+        <img src="lily.png">
 
         <br>
-        <iframe src="https://pasta.snow-rentaroren.repl.co/display.php" id="display" frameborder="0"></iframe>
+        <iframe src="https://pasta.snow-rentaroren.repl.co/display.php" id="display" frameborder="0">
+        </iframe>
         <br>
         
         <form action="https://pasta.snow-rentaroren.repl.co/counter.php" method="post" target="frame">
-
+        
           <input id="btn" type="submit" class="submit" value="Lilly said the FUNNY!!!">
           <br>
           <input id="password" type="password" name="password">
@@ -93,48 +28,21 @@
         </form>
       
     </div>
-    <br>
-    <center>
-        <p style="position:center; color:white;"> still under developement, counter will not always be accurate </p>
-    </center>
+    
+    <div id="message">
+      <div class="msg">
+        <div class="msgmsg">Lilly get the FUCK outta here</div>
+        <div class="msgbtn"><button id="hidemsg">OK</button></div>
+      </div>
+    </div>
+    
+    <!-- dummy frame for form target -->
     <iframe name="frame" src="https://pasta.snow-rentaroren.repl.co/counter.php" frameborder="0" id="frame"></iframe>
-      
+    
+    <!-- scripts to tell Lilly to fuck off if she presses the button with the wrong password -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/sha256.js"></script>
-    <script>
-      
-      const sha256 = CryptoJS.SHA256;
-      let passhash = "7c04837eb356565e28bb14e5a1dedb240a5ac2561f8ed318c54a279fb6a9665e";
-      
-        /*
-      function reload(id) {
-        let frame = document.getElementById(id);
-        frame.src = frame.src;
-      }
-
-      function reloadDisplay() {
-        reload("display");
-      }
-
-      let refresh = setInterval(reloadDisplay, 3000);
-      
-      function startRefresh() {
-        refresh = setInterval(reloadDisplay, 3000);
-      }
-
-      let spamTimer = setTimeout(startRefresh, 3000);
-      */ 
-        
-      document.getElementById("btn").onclick = function () {
-        let pass = document.getElementById("password").value;
-        let hash = sha256(pass);
-        if(hash != passhash) alert("Lilly get the FUCK outta here");
-        //clearInterval(refresh);
-        //clearTimeout(spamTimer);
-        //spamTimer = setTimeout(startRefresh, 3000);
-      }
-      
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
