@@ -1,0 +1,132 @@
+@font-face {
+  font-family: LatoBla;
+  src: url("Lato-Bla.ttf");
+}
+
+@font-face {
+  font-family: Trebuchet;
+  src: url("trebuchet.otf");
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 90vh;
+  background: black;
+}
+        
+body, .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  background: black;
+}
+        
+.container {
+  position:relative; 
+  width: 200px;
+  //height: 343px;
+  border: 1px solid black;
+  border-radius: 10px 10px 10px 10px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1em;
+  padding-top: .75em;
+  background: white;
+}
+       
+h1 {
+  position:relative; 
+  text-align:center; 
+  font-family:monospace;
+  color: white;
+}
+
+.submit {
+  all: unset;
+  border: 1px solid black;
+  background: rgb(210, 210, 210);
+  font-size: .9em;
+  padding: .5em;
+  border-radius: 5px 5px 5px 5px;
+  position: relative;
+  text-align: center;
+}
+
+.submit:hover {
+  background: rgb(160, 160, 160);
+  cursor: pointer;
+}
+
+iframe { 
+  height: 2.2em;
+  width: 100%;       
+}
+
+form, input {
+  display: inline-block;
+}
+
+#password {
+  width: 50px;
+  text-align:center;
+  margin-top: 1em;
+}
+
+#frame {
+  display: none;
+}
+
+p {
+  position: relative; 
+  left: 0px; top: -8px; 
+  text-align: center;
+}
+
+#message {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  font-family: Lato, LatoBla, Trebuchet;
+  font-size: 1.2em;
+}
+
+.msg {
+  position: absolute;
+  top: 40vh;
+  background: rgb(50, 50, 50);
+  color: white;
+  padding: 2em;
+  border-radius: 20px;
+}
+
+.msgmsg {
+  padding: 1em;
+  padding-top: 0;
+  padding-right: 3em;
+}
+
+.msgbtn {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+#hidemsg {
+  all: unset;
+  color: black;
+  padding: .5em;
+  border-radius: 8px;
+  background: rgb(0, 200, 220);
+}
+
+#hidemsg:hover {
+  background: rgb(100, 255, 255);
+  cursor: pointer;
+}
