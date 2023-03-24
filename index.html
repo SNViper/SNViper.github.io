@@ -14,10 +14,15 @@
         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
         <img src="lily.png">
         </a>
+        
+        <!-- 
         <div style="position: relative; height: 3em;">
             <iframe src="https://pasta.snow-rentaroren.repl.co/display.php" id="display" frameborder="0" style="position: absolute">
             </iframe>
         </div>
+        --> 
+        <br>
+        <p id="countdisplay"></p>
         <br>
         
         <form action="https://pasta.snow-rentaroren.repl.co/counter.php" method="post" target="frame">
@@ -44,6 +49,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/sha256.js"></script>
     <script src="script.js"></script>
+    
+    <!-- scripts for displaying the count -->
+    <script>
+        const updateCount = count => document.getElementById("countdisplay").innerHTML = count;
+    </script>
+    <script id="counterscript" src="https://Pasta.snow-rentaroren.repl.co/count.js"></script>
+    <script>
+        
+        var countScript = document.getElementById("counterscript");
+        
+        function refresh() {
+            document.body.removeChild(countScript);
+            countScript = document.createElement("script");
+            countScript.src = "https://Pasta.snow-rentaroren.repl.co/count.js";
+            document.body.appendChild(countScript);
+        }
+        
+        setInterval(refresh, 3000);
+            
+    </script>
 
 </body>
 </html>
