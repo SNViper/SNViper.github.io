@@ -100,7 +100,7 @@ p {
 
 .msg {
   position: absolute;
-  top: 40vh;
+  bottom: 8vh;
   background: rgb(50, 50, 50);
   color: white;
   padding: 2em;
